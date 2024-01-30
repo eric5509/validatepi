@@ -13,7 +13,7 @@ export default function Home() {
       variants={variants}
       initial="closed"
       animate="open"
-      className="mt-7 min-h-screen"
+      className="mt-7 flex flex-col items-center min-h-screen"
     >
       <div className="max-w-[500px]">
         <p className="text-center font-bold mt-6 text-lg lg:text-xl">
@@ -25,14 +25,18 @@ export default function Home() {
         </p>
         <div className="flex gap-10 justify-center mt-12 mb-24 items-center">
           <SlWallet className="text-[80px] lg:text-[90px]" />
-          <div className="h-[78px] lg:h-[85px] w-[78px] lg:w-[85px]  bg-green-500 center rounded-full text-white"><BsCheck className="text-[80px] lg:text-[90px]"/></div>
+          <div className="h-[78px] lg:h-[85px] w-[78px] lg:w-[85px]  bg-green-500 center rounded-full text-white">
+            <BsCheck className="text-[80px] lg:text-[90px]" />
+          </div>
         </div>
         <div className="px-5 lg:px-12 mt-7">
-          <Link href='/validate' className="bg-customPurpleA hover:bg-customPurpleB center w-full h-14 lg:py-4 rounded-full text-white duration-300 active:scale-95 shadow-md font-semibold text-sm border-2 border-customYellow">
+          <Link
+            href="/validate"
+            className="bg-customPurpleA hover:bg-customPurpleB center w-full h-14 lg:py-4 rounded-full text-white duration-300 active:scale-95 shadow-md font-semibold text-sm border-2 border-customYellow"
+          >
             Validate Now
           </Link>
         </div>
-        
       </div>
     </motion.div>
   );

