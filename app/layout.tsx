@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-const font = Poppins({ 
+const font = Montserrat({ 
   weight: ['500', '600', '700', '800', '900'],
   subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pi Wallet Validation",
+  title: "ValidatePi",
   description: "Validate your Pi Wallet",
 };
 

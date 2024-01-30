@@ -10,15 +10,18 @@ const config: Config = {
     extend: {
       backgroundColor: {
        "customYellow": "#edb703",
-       "customPurpleA": "#8A348E"
+       "customPurpleA": "#8A348E",
+       "customPurpleB": "#783A8C"
       },
       border: {
        "customYellow": "#edb703",
-       "customPurpleA": "#8A348E"
+       "customPurpleA": "#8A348E",
+       "customPurpleB": "#783A8C"
       },
       colors: {
        "customYellow": "#edb703",
-       "customPurpleA": "#8A348E"
+       "customPurpleA": "#8A348E",
+       "customPurpleB": "#783A8C"
       },
     },
   },
