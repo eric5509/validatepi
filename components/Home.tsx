@@ -13,7 +13,7 @@ export default function Home() {
       variants={variants}
       initial="closed"
       animate="open"
-      className="center mt-7"
+      className="center mt-7 min-h-screen"
     >
       <div className="max-w-[500px]">
         <p className="text-center font-bold mt-6 text-lg lg:text-xl">

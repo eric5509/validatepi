@@ -9,7 +9,7 @@ export default function Success() {
       variants={variants}
       initial="closed"
       animate="open"
-      className="center mt-7"
+      className="center mt-7 min-h-screen"
     >
       <div className="text-center max-w-[500px]">
         <div className="px-5">
